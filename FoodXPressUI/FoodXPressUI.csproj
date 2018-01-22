@@ -79,6 +79,16 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FoodXPress.BOL\FoodXPress.BOL.csproj">
+      <Project>{11e35147-99c0-4642-8b30-d43ce274738a}</Project>
+      <Name>FoodXPress.BOL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FoodXPress.DAL\FoodXPress.DAL.csproj">
+      <Project>{61e6f30a-abea-40f9-a319-324dbd5ad8f6}</Project>
+      <Name>FoodXPress.DAL</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
