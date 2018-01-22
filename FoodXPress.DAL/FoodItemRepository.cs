@@ -5,16 +5,17 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 
 namespace FoodXPress.DAL
 {
     public class FoodItemRepository : IFoodItemRepository
     {
-        private readonly IDbConnection _db;
+        private static string _env;
 
         public FoodItemRepository(string env = "Default")
         {
-            _db = new SqlConnection(Helpers.ConnectionStringHelper.GetConnectionString(env));
+            _env = env;
         }
 
         public void Delete(int id)
@@ -27,18 +28,51 @@ namespace FoodXPress.DAL
             throw new NotImplementedException();
         }
 
-        public IEnumerable<FoodItem> GetAll()
+        public List<FoodItem> GetAllDrinks()
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (IDbConnection db = new SqlConnection(Helpers.ConnectionStringHelper.GetConnectionString(_env)))
+                {
+                    var foodItems = db.Query<FoodItem>("dbo.FoodItem_GetAll")
+                                       .Where(f => f.Category == Category.Beverage)
+                                       .ToList();
+                    return foodItems;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
+        public List<FoodItem> GetAllMeals()
+        {
+            try
+            {
+                using (IDbConnection db = new SqlConnection(Helpers.ConnectionStringHelper.GetConnectionString(_env)))
+                {
+                    var foodItems = db.Query<FoodItem>("dbo.FoodItem_GetAll")
+                                       .Where(f => f.Category == Category.Meal)
+                                       .ToList();
+                    return foodItems;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
 
         public bool Insert(FoodItem foodItem)
         {
             try
             {
-                using (_db)
+                using (IDbConnection db = new SqlConnection(Helpers.ConnectionStringHelper.GetConnectionString(_env)))
                 {
-                    _db.Execute("dbo.FoodItem_Insert @Name, @Price, @Category",
+                    db.Execute("dbo.FoodItem_Insert @Name, @Price, @Category",
                     new { Name = foodItem.Name, Price = foodItem.Price, Category = foodItem.Category });
 
                     return true;
