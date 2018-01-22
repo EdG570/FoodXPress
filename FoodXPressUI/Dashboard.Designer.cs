@@ -31,6 +31,9 @@
             this.FoodItemListBox = new System.Windows.Forms.ListBox();
             this.DrinksListButton = new System.Windows.Forms.Button();
             this.MealsListButton = new System.Windows.Forms.Button();
+            this.OrderItemListBox = new System.Windows.Forms.ListBox();
+            this.AddToOrderButton = new System.Windows.Forms.Button();
+            this.FoodItemQuantityDropdown = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // FoodItemListBox
@@ -63,11 +66,40 @@
             this.MealsListButton.UseVisualStyleBackColor = true;
             this.MealsListButton.Click += new System.EventHandler(this.MealsListButton_Click);
             // 
+            // OrderItemListBox
+            // 
+            this.OrderItemListBox.FormattingEnabled = true;
+            this.OrderItemListBox.Location = new System.Drawing.Point(447, 68);
+            this.OrderItemListBox.Name = "OrderItemListBox";
+            this.OrderItemListBox.Size = new System.Drawing.Size(233, 329);
+            this.OrderItemListBox.TabIndex = 2;
+            // 
+            // AddToOrderButton
+            // 
+            this.AddToOrderButton.Location = new System.Drawing.Point(304, 154);
+            this.AddToOrderButton.Name = "AddToOrderButton";
+            this.AddToOrderButton.Size = new System.Drawing.Size(112, 38);
+            this.AddToOrderButton.TabIndex = 3;
+            this.AddToOrderButton.Text = "Add to Order ->";
+            this.AddToOrderButton.UseVisualStyleBackColor = true;
+            this.AddToOrderButton.Click += new System.EventHandler(this.AddToOrderButton_Click);
+            // 
+            // FoodItemQuantityDropdown
+            // 
+            this.FoodItemQuantityDropdown.FormattingEnabled = true;
+            this.FoodItemQuantityDropdown.Location = new System.Drawing.Point(49, 413);
+            this.FoodItemQuantityDropdown.Name = "FoodItemQuantityDropdown";
+            this.FoodItemQuantityDropdown.Size = new System.Drawing.Size(46, 21);
+            this.FoodItemQuantityDropdown.TabIndex = 4;
+            // 
             // NewOrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(728, 476);
+            this.Controls.Add(this.FoodItemQuantityDropdown);
+            this.Controls.Add(this.AddToOrderButton);
+            this.Controls.Add(this.OrderItemListBox);
             this.Controls.Add(this.MealsListButton);
             this.Controls.Add(this.DrinksListButton);
             this.Controls.Add(this.FoodItemListBox);
@@ -83,6 +115,9 @@
         private System.Windows.Forms.ListBox FoodItemListBox;
         private System.Windows.Forms.Button DrinksListButton;
         private System.Windows.Forms.Button MealsListButton;
+        private System.Windows.Forms.ListBox OrderItemListBox;
+        private System.Windows.Forms.Button AddToOrderButton;
+        private System.Windows.Forms.ComboBox FoodItemQuantityDropdown;
     }
 }
 
