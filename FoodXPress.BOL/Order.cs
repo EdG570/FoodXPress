@@ -14,9 +14,9 @@ namespace FoodXPress.BOL
 
     public class Order
     {
-        public int OrderId { get; set; }
+        public Guid Id { get; set; }
         public DateTime CreatedAt { get; set; }
         public Status Status { get; set; }
-        public int TableId { get; set; }
+        public Guid TableId { get; set; }
     }
 }
